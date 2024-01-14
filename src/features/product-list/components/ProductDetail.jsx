@@ -62,7 +62,10 @@ export default function ProductDetail() {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    if (items.findIndex((item) => item.product.id === product.id) < 0) {
+    if (
+      Array.isArray(items) &&
+      items.findIndex((item) => item.product.id === product.id) < 0
+    ) {
       const newItem = {
         product: product.id,
         quantity: 1,
