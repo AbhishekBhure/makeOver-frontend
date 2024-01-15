@@ -95,7 +95,7 @@ function App() {
             />
             <Route
               exact
-              path="order-success/:id"
+              path="/order-success/:id"
               element={<OrderSuccessPage />}
             />
           </Route>
