@@ -65,7 +65,7 @@ export default function CheckoutForm({ options }) {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `https://make-overr.netlify.app/order-success/${currentOrder.id}`,
+        return_url: `/order-success/${currentOrder.id}`,
       },
     });
     console.log("err", error);
