@@ -95,7 +95,7 @@ function App() {
             />
             <Route
               exact
-              path="/order-success/:id"
+              path="https://make-overr.netlify.app/order-success/:id"
               element={<OrderSuccessPage />}
             />
           </Route>
