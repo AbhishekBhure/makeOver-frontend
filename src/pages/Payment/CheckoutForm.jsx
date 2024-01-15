@@ -7,7 +7,7 @@ import {
 import { useSelector } from "react-redux";
 import { selectCurrentOrder } from "../../features/order/orderSlice";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ options }) {
   const stripe = useStripe();
   const elements = useElements();
   const currentOrder = useSelector(selectCurrentOrder);
@@ -19,10 +19,8 @@ export default function CheckoutForm() {
     if (!stripe) {
       return;
     }
-
-    const clientSecret = new URLSearchParams(window.location.search).get(
-      "payment_intent_client_secret"
-    );
+    console.log("test");
+    const clientSecret = options.clientSecret;
 
     if (!clientSecret) {
       return;
