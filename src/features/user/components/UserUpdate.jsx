@@ -75,13 +75,16 @@ const UserUpdate = () => {
     const userId = currentUser.user._id;
     try {
       dispatch(updateUserStart());
-      const res = await fetch(`/api/v1/users/update/${userId}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userDetails),
-      });
+      const res = await fetch(
+        `https://makeover-backend.onrender.com/api/v1/users/update/${userId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userDetails),
+        }
+      );
       const user = await res.json();
       if (user.success === false) {
         dispatch(updateUserFail(user.message));
