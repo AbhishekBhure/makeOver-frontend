@@ -22,17 +22,14 @@ export default function StripeCheckout() {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch(
-      "https://makeover-backend.onrender.com/api/v1/create-payment-intent",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          totalAmount: currentOrder.totalAmount,
-          orderId: currentOrder.id,
-        }),
-      }
-    )
+    fetch("/api/v1/create-payment-intent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        totalAmount: currentOrder.totalAmount,
+        orderId: currentOrder.id,
+      }),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "stripecheck");
