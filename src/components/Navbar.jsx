@@ -93,7 +93,7 @@ const Navbar = () => {
               placeholder="Search products..."
               className="bg-transparent focus:outline-none w-32 sm:w-64"
             />
-            <button>
+            <button disabled={searchTerm.length === 0}>
               <LuSearch className="text-xl" />
             </button>
           </form>
