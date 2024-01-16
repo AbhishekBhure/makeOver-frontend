@@ -32,6 +32,7 @@ import howTo1 from "./how-to-1.png";
 import howTo2 from "./how-to-2.png";
 import sugarFound2 from "./suagr-found-2.png";
 import sugarFound3 from "./sugar-found-3.png";
+import noResult from "./no-result.png";
 
 export {
   LuAlertTriangle,
@@ -66,4 +67,5 @@ export {
   howTo2,
   sugarFound2,
   sugarFound3,
+  noResult,
 };

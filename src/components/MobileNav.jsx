@@ -23,7 +23,6 @@ const MobileNav = ({ isMobileMenuOpen, toggleMobileMenu }) => {
     e.preventDefault();
     navigate("/product-listing");
     dispatch(fetchProductsByFiltersAsync({ searchTerm }));
-    setSearchTerm("");
   };
 
   const handleSignOut = async () => {

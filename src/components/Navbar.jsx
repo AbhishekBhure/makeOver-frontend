@@ -26,7 +26,6 @@ const Navbar = () => {
     e.preventDefault();
     navigate("/product-listing");
     dispatch(fetchProductsByFiltersAsync({ searchTerm, category }));
-    setSearchTerm("");
   };
 
   return (
