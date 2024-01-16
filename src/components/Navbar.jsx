@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { LuHeart, LuShoppingBag, LuSearch, LuText } from "../icons";
+import { LuShoppingBag, LuSearch, LuText } from "../icons";
 import { useState } from "react";
 import MobileNav from "./MobileNav";
 import { useDispatch, useSelector } from "react-redux";
@@ -108,11 +108,6 @@ const Navbar = () => {
                 )}
               </Link>
             </div>
-            <div>
-              <Link to="/">
-                <LuHeart className="text-xl" />
-              </Link>
-            </div>
           </div>
           <div>
             {currentUser && currentUser ? (
@@ -146,11 +141,6 @@ const Navbar = () => {
                     {items.length}
                   </span>
                 )}
-              </Link>
-            </div>
-            <div>
-              <Link to="/">
-                <LuHeart className="text-xl" />
               </Link>
             </div>
           </div>
