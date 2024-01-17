@@ -463,7 +463,7 @@ function CheckOut() {
                 </div>
                 <div className="flex justify-between text-base font-medium text-gray-900">
                   <p>Subtotal</p>
-                  <p>${totalAmount}</p>
+                  <p>₹{totalAmount}</p>
                 </div>
 
                 <p className="mt-0.5 text-sm text-gray-500">
