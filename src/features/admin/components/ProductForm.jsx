@@ -201,7 +201,7 @@ const ProductForm = () => {
                   type="number"
                   placeholder="Price"
                   min={20}
-                  max={1000}
+                  max={10000}
                   required
                   onChange={handleChange}
                   value={productDetails.price}
@@ -212,7 +212,6 @@ const ProductForm = () => {
                   type="number"
                   placeholder="Discounted Percentage"
                   required
-                  min={10}
                   max={100}
                   onChange={handleChange}
                   value={productDetails.discountPercentage}
