@@ -212,6 +212,7 @@ const ProductForm = () => {
                   type="number"
                   placeholder="Discounted Percentage"
                   required
+                  min={5}
                   max={100}
                   onChange={handleChange}
                   value={productDetails.discountPercentage}

@@ -236,7 +236,7 @@ const UpdateProduct = () => {
                 type="text"
                 placeholder="Name"
                 minLength="6"
-                maxLength="62"
+                maxLength="100"
                 onChange={handleChange}
                 value={productDetails.title}
                 className="border p-3 focus:outline-none focus:rounded-2xl transition-all focus:border-slate-500 duration-700 rounded-lg"
@@ -255,7 +255,7 @@ const UpdateProduct = () => {
                 type="number"
                 placeholder="Price"
                 min={20}
-                max={1000}
+                max={10000}
                 required
                 onChange={handleChange}
                 value={productDetails.price}
@@ -266,7 +266,7 @@ const UpdateProduct = () => {
                 type="number"
                 placeholder="Discounted Percentage"
                 required
-                min={10}
+                min={5}
                 max={100}
                 onChange={handleChange}
                 value={productDetails.discountPercentage}
