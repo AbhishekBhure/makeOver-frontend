@@ -12,8 +12,6 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
 
-  console.log(formData);
-
   const { enqueueSnackbar } = useSnackbar();
 
   const navigate = useNavigate();
