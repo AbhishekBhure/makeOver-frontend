@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LuEye, LuEyeOff } from "../../icons";
 import Loader from "../../components/Loader";
 import { useSnackbar } from "notistack";
 import Layout from "../../components/Layout";
 import OAuth from "../../features/googleAuth/OAuth";
+import { selectUser } from "../../features/auth/authSlice";
+import { useSelector } from "react-redux";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({});
@@ -15,6 +17,14 @@ const SignUp = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const navigate = useNavigate();
+
+  const user = useSelector(selectUser);
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const handleChange = (e) => {
     setFormData({

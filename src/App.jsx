@@ -39,7 +39,6 @@ function App() {
   useEffect(() => {
     if (user) {
       dispatch(fetchCartItemsByUserIdAsync(id));
-      // dispatch(fetchLoggedInUserInfoAsync(id));
     }
   }, [dispatch, user, id]);
 

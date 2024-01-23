@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { LuEye, LuEyeOff } from "../../icons";
 import Loader from "../../components/Loader";
 import { useSnackbar } from "notistack";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  selectUser,
   signInFail,
   signInStart,
   signInSuccess,
@@ -17,11 +18,18 @@ const SignIn = () => {
   const { loading } = useSelector((state) => state.auth);
   const [visible, setVisible] = useState(false);
 
-  const { enqueueSnackbar } = useSnackbar();
-
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
+
+  const { enqueueSnackbar } = useSnackbar();
+  const user = useSelector(selectUser);
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const handleChange = (e) => {
     setFormData({
