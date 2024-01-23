@@ -20,6 +20,7 @@ import {
 import Loader from "../../../components/Loader";
 import { useSnackbar } from "notistack";
 import ConfirmationModal from "../../../components/ConfirmationModal";
+import BackButton from "../../../components/BackButton";
 
 const UpdateProduct = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -199,6 +200,7 @@ const UpdateProduct = () => {
 
   return (
     <>
+      <BackButton />
       {productLoading ? (
         <Loader />
       ) : (
