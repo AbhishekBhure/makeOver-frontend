@@ -67,7 +67,7 @@ const OrderDetail = ({ showModal, handleCancel, orders }) => {
                                   </span>
                                 </p>
 
-                                <p className="flex gap-2">
+                                <p className="flex gap-0 sm:gap-2 flex-wrap">
                                   <span>
                                     Discount: {item.product.discountPercentage}%
                                   </span>
@@ -86,13 +86,13 @@ const OrderDetail = ({ showModal, handleCancel, orders }) => {
                         ))}
                       <div className="bg-gray-200 px-3 rounded">
                         <h2>Selected Address:</h2>
-                        <p className="flex gap-2">
+                        <p className="flex gap-0 sm:gap-2 flex-wrap">
                           <span className="capitalize">
                             User name: {orders?.selectedAddress?.name}{" "}
                           </span>
                           <span>Email: {orders?.selectedAddress?.email} </span>
                         </p>
-                        <p className="flex gap-2">
+                        <p className="flex gap-0 sm:gap-2 flex-wrap">
                           <span className="capitalize">
                             Street: {orders?.selectedAddress?.street}{" "}
                           </span>
