@@ -13,6 +13,7 @@ import Pagination from "../../../components/Pagination";
 import { useSnackbar } from "notistack";
 import Loader from "../../../components/Loader";
 import BackButton from "../../../components/BackButton";
+import OrderDetail from "./OrderDetail";
 
 const AdminOrders = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -27,6 +28,8 @@ const AdminOrders = () => {
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState({});
   const [editOrderId, setEditOrderId] = useState(-1);
+  const [showOrderModal, setShowOrderModal] = useState(false);
+  const [filterOrder, setFilterOrder] = useState({});
 
   const handlePage = (page) => {
     setPage(page);
@@ -37,8 +40,10 @@ const AdminOrders = () => {
     dispatch(fetchAllOrdersAsync({ sort, pagination }));
   }, [dispatch, page, sort]);
 
-  const handleShow = () => {
-    console.log("show");
+  const handleShow = (orderId) => {
+    const selectedOrder = orders.find((order) => order.id === orderId);
+    setFilterOrder({ ...selectedOrder });
+    setShowOrderModal(true);
   };
 
   const handleEdit = (order) => {
@@ -97,6 +102,11 @@ const AdminOrders = () => {
       ) : (
         <>
           <BackButton />
+          <OrderDetail
+            showModal={showOrderModal}
+            handleCancel={() => setShowOrderModal(false)}
+            orders={filterOrder}
+          />
           <div className="overflow-x-auto">
             <div className="font-secondary flex items-center justify-center">
               <div className="w-full">
@@ -163,7 +173,7 @@ const AdminOrders = () => {
                         orders &&
                         orders.map((order, index) => (
                           <tr
-                            key={order.id}
+                            key={order.createdAt}
                             className="border-b border-gray-200 hover:bg-gray-100"
                           >
                             <td className="py-3 px-4 text-left whitespace-nowrap">
@@ -174,7 +184,7 @@ const AdminOrders = () => {
                             <td className="py-3 px-4 text-left">
                               {order.items.map((item) => (
                                 <div
-                                  key={order.id}
+                                  key={order.createdAt}
                                   className="flex items-center"
                                 >
                                   <div className="mr-2 ">
@@ -184,7 +194,7 @@ const AdminOrders = () => {
                                       alt={item.product.title}
                                     />
                                   </div>
-                                  <span className="line-clamp-2">
+                                  <span className="line-clamp-1 w-12">
                                     {item.product.title}
                                   </span>
                                 </div>
@@ -193,7 +203,7 @@ const AdminOrders = () => {
                             <td className="py-3 px-4 text-center">
                               {order.items.map((item) => (
                                 <div
-                                  key={order.id}
+                                  key={order.createdAt}
                                   className="flex items-center justify-center"
                                 >
                                   <span>{item.quantity}</span>
@@ -204,7 +214,7 @@ const AdminOrders = () => {
                             <td className="py-3 px-4 text-center">
                               {order.items.map((item) => (
                                 <div
-                                  key={order.id}
+                                  key={order.createdAt}
                                   className="flex items-center justify-center"
                                 >
                                   <span> ₹{item.product.discountPrice}</span>
@@ -214,15 +224,6 @@ const AdminOrders = () => {
                             <td className="py-3 px-4 text-center">
                               <span className="">₹{order.totalAmount}</span>
                             </td>
-                            {/* <td className="py-3 px-4 text-center">
-                          <strong className="">
-                            {order.selectedAddress.name}
-                          </strong>
-                          <p> {order.selectedAddress.street}, </p>
-                          <p> {order.selectedAddress.city}, </p>
-                          <p> {order.selectedAddress.state}, </p>
-                          <p> {order.selectedAddress.pinCode}. </p>
-                        </td> */}
                             <td className="py-3 px-4 text-center">
                               {order.id === editOrderId ? (
                                 <select
@@ -281,7 +282,7 @@ const AdminOrders = () => {
                               <div className="flex item-center gap-1 justify-center">
                                 <div className="w-4 mr-2 cursor-pointer transform hover:text-pink-500 hover:scale-110">
                                   <LuEye
-                                    onClick={(e) => handleShow(order)}
+                                    onClick={(e) => handleShow(order.id)}
                                     className="text-xl"
                                   />
                                 </div>
